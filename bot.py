@@ -144,8 +144,8 @@ def handle_message(update: Update, context: CallbackContext):
         journal_entries = daily_journal.get(str(user_id), {}).get(today, [])
         habits_done = daily_habits.get(str(user_id), {}).get(today, [])
 
-        report = f"\n📘 *ДНЕВНИК*: {'\n'.join(journal_entries) if journal_entries else 'пусто'}"
-        report += f"\n\n✅ *ПРИВЫЧКИ*: {'\n'.join(habits_done) if habits_done else 'не отмечены'}"
+        report = "\n📘 *ДНЕВНИК*: " + ("\n".join(journal_entries) if journal_entries else "пусто")
+        report += "\n\n✅ *ПРИВЫЧКИ*: " + ("\n".join(habits_done) if habits_done else "не отмечены")
         update.message.reply_text(report, parse_mode=telegram.ParseMode.MARKDOWN)
     elif user_message.startswith("/путь"):
         update.message.reply_text(f"🛡 *Твой Кодекс Воина:*\n\n{WARRIOR_CODE}", parse_mode=telegram.ParseMode.MARKDOWN)
